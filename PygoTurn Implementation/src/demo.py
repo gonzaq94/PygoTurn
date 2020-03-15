@@ -6,8 +6,6 @@ import cv2
 
 from test import GOTURN
 
-from utils import get_project_root
-
 args = None
 parser = argparse.ArgumentParser(description='GOTURN Testing')
 parser.add_argument('-w', '--model-weights',
@@ -67,7 +65,6 @@ def save(im, bb, gt_bb, idx):
 def main(args):
     cuda = torch.cuda.is_available()
     device = torch.device('cuda:0' if cuda else 'cpu')
-    print(get_project_root())
     tester = GOTURN(args.data_directory,
                     args.model_weights,
                     device)

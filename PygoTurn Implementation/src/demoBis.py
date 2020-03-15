@@ -68,8 +68,6 @@ def main(args):
     cuda = torch.cuda.is_available()
     device = torch.device('cuda:0' if cuda else 'cpu')
 
-    print args.model_weights
-
     tester = GOTURN(args.data_directory,
                     args.model_weights,
                     device)
