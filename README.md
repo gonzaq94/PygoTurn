@@ -4,5 +4,8 @@ To execute the code, you just need to download the pretrained model as indicated
 
 python3 PygoTurn/PygoTurn\ Implementation/src/demo.py -w pytorch_goturn.pth.tar -d PygoTurn/PygoTurn\ Implementation/sequences-train/book/ -s PygoTurn/PygoTurn\ Implementation/our_results/book/
 
+demo.py: uses only one instance of PygoTurn
+demoBis.py: uses two instances, that move in forward and backward directions, respectively.
+
 Please, if you are working with Pycharm or another IDE, do not add to the repository the folders "venv" and "
 .idea" inside the PygoTurn Implementation folder. You can avoid this by adding each modified file manually (git add file.py) or by adding all the files and then removing some of them (git add . ; git rm --cached PygoTurn\ Implementation/venv/ -r ; git rm --cached PygoTurn\ Implementation/.idea/ -r)
