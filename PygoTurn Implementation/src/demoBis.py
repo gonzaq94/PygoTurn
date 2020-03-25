@@ -18,6 +18,11 @@ parser.add_argument('-d', '--data-directory',
 parser.add_argument('-s', '--save-directory',
                     default='../result',
                     type=str, help='path to save directory')
+
+parser.add_argument('-plots', '--save-plots-directory',
+                    default='../plots',
+                    type=str, help='directory where to save the plots')
+
 parser.add_argument('-method', '--method',
                     default='iou',
                     type=str, help='Result combination method')
@@ -87,6 +92,12 @@ def main(args):
         print('Save directory %s already exists' % (args.save_directory))
     else:
         os.makedirs(args.save_directory)
+
+    if os.path.exists(args.save_plots_directory):
+        print('Save plots directory %s already exists' % (args.save_plots_directory))
+    else:
+        os.makedirs(args.save_plots_directory)
+
     # save initial frame with bounding box
     save(tester.img[0][0], tester.prev_rect, tester.prev_rect, 1)
     tester.model.eval()
@@ -120,6 +131,7 @@ def main(args):
     final_bbs.append(tester.gt[0])
     bb_p = np.array(bb_p)
     bb_f = np.array(bb_f)
+
     for i in range(1, tester.len-1):
 
         gt_bb = tester.gt[i]
@@ -160,7 +172,7 @@ def main(args):
     if args.method == 'iou':
         print("The delta instance won a total of " + str(future_won) + " times.")
 
-    np.save(args.save_directory + "/forward_backward_iou_method_" + args.method, np.array(iou_list))
+    np.save(args.save_plots_directory + "/forward_backward_iou_method_" + args.method, np.array(iou_list))
 
     final_bbs.append(bb_p[tester.len-1])
 

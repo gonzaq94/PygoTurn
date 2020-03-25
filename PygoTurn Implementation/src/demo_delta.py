@@ -18,8 +18,13 @@ parser.add_argument('-d', '--data-directory',
 parser.add_argument('-s', '--save-directory',
                     default='../result',
                     type=str, help='path to save directory')
+
+parser.add_argument('-plots', '--save-plots-directory',
+                    default='../plots',
+                    type=str, help='directory where to save the plots')
+
 parser.add_argument('-method', '--method',
-                    default='iou',
+                    default='original',
                     type=str, help='Result combination method')
 
 
@@ -86,6 +91,12 @@ def main(args):
         print('Save directory %s already exists' % (args.save_directory))
     else:
         os.makedirs(args.save_directory)
+
+    if os.path.exists(args.save_plots_directory):
+        print('Save plots directory %s already exists' % (args.save_plots_directory))
+    else:
+        os.makedirs(args.save_plots_directory)
+
     # save initial frame with bounding box
     save(tester.img[0][0], tester.prev_rect, tester.prev_rect, 1)
     tester.model.eval()
@@ -150,7 +161,7 @@ def main(args):
 
         else:
             save(im, bb, gt_bb, i + 2)
-            iou_tot = iou
+            iou_tot = axis_aligned_iou(gt_bb, bb)
 
         print('frame: %d, IoU = %f' % (i + 2, iou_tot))
 
@@ -160,7 +171,8 @@ def main(args):
 
         print("The delta instance won a total of "+str(delta_won)+" times.")
 
-    np.save(args.save_directory + "/iou_method_" + args.method, np.array(iou_list))
+    np.save(args.save_plots_directory + "/delta_iou_method_" + args.method, np.array(iou_list))
+
 
 
 if __name__ == "__main__":
