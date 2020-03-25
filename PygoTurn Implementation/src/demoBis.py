@@ -18,6 +18,9 @@ parser.add_argument('-d', '--data-directory',
 parser.add_argument('-s', '--save-directory',
                     default='../result',
                     type=str, help='path to save directory')
+parser.add_argument('-method', '--method',
+                    default='iou',
+                    type=str, help='Result combination method')
 
 
 def axis_aligned_iou(boxA, boxB):
@@ -65,6 +68,10 @@ def save(im, bb, gt_bb, idx):
 
 
 def main(args):
+
+    future_won = 0
+    iou_list = []
+
     cuda = torch.cuda.is_available()
     device = torch.device('cuda:0' if cuda else 'cpu')
 
@@ -106,9 +113,7 @@ def main(args):
         bb_p.append(bb)
         bb_f.append(bbf)
 
-        # print stats
-        print('frame: %d, IoU = %f' % (
-            i+2, axis_aligned_iou(gt_bb, bb)))
+
 
     bb_f.reverse()
     final_bbs = []
@@ -119,18 +124,43 @@ def main(args):
 
         gt_bb = tester.gt[i]
 
-        iou_p = axis_aligned_iou(gt_bb, list(bb_p[i]))
-        iou_f = axis_aligned_iou(gt_bb, list(bb_f[i]))
+        if args.method == "mean":
 
-        if iou_f>iou_p:
-            final_bbs.append(bb_f[i])
-            print(str(i)+' FUTURE WON')
+            bb_mean = (bb_p[i] + bb_f[i]) / 2
+            final_bbs.append(bb_mean)
+            iou_tot = axis_aligned_iou(gt_bb, bb_mean)
+
+        elif args.method == "iou":
+
+            iou_p = axis_aligned_iou(gt_bb, list(bb_p[i]))
+            iou_f = axis_aligned_iou(gt_bb, list(bb_f[i]))
+
+            if iou_f > iou_p:
+                final_bbs.append(bb_f[i])
+                future_won += 1
+                iou_tot = iou_f
+            else:
+                final_bbs.append(bb_p[i])
+                iou_tot = iou_p
+
         else:
             final_bbs.append(bb_p[i])
+            iou_tot = iou
+
 
         im = tester.img[i][1]
         gt_bb = tester.gt[i]
         save(im, final_bbs[i], gt_bb, i+2)
+
+        # print stats
+        print('frame: %d, IoU = %f' % (i+2, iou_tot))
+
+        iou_list.append(iou_tot)
+
+    if args.method == 'iou':
+        print("The delta instance won a total of " + str(future_won) + " times.")
+
+    np.save(args.save_directory + "/forward_backward_iou_method_" + args.method, np.array(iou_list))
 
     final_bbs.append(bb_p[tester.len-1])
 
