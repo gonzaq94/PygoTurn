@@ -1,4 +1,4 @@
-# PygoTurn
+# PyTorch GOTURN tracker
 
 ## Demo
 
