@@ -10,7 +10,7 @@ demoBis.py: uses two instances, that move in forward and backward directions, re
 
 demo_delta.py: uses two instances both moving in the forward direction, separated delta frames.
 
-Two commands added:
+Two commands were added:
 
 -method: method used for combining the bounding boxes of the two instances. iou: chose the BB with max IoU (uses the ground truth). mean: computes the mean between the two BBs (no grund truth). By default we just use one of the instances.
 
