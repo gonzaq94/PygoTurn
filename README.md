@@ -2,6 +2,8 @@
 
 ## Demo
 
+Three demo codes.
+
 demo.py: uses only one instance of PygoTurn
 
 demoBis.py: uses two instances, that move in forward and backward directions, respectively.
@@ -25,4 +27,4 @@ Arguments:
 
 Example:
 
-python3 PygoTurn/PygoTurn\ Implementation/src/demo_delta.py -w pytorch_goturn.pth.tar -d PygoTurn/PygoTurn\ Implementation/sequences-train/book/ -s PygoTurn/PygoTurn\ Implementation/our_results/book/ -plots PygoTurn/PygoTurn\ Implementation/our_results/plots/book -method mean
+`python3 PygoTurn/PygoTurn\ Implementation/src/demo_delta.py -w pytorch_goturn.pth.tar -d PygoTurn/PygoTurn\ Implementation/sequences-train/book/ -s PygoTurn/PygoTurn\ Implementation/our_results/book/ -plots PygoTurn/PygoTurn\ Implementation/our_results/plots/book -method mean`
