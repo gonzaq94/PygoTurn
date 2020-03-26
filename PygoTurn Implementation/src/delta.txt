@@ -1,0 +1,16 @@
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/bear" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/bear_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/bear" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/book" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/book_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/book" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/camel" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/camel_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/camel" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/fish" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/fish_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/fish" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/octopus" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/octopus_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/octopus" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/rhino" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/rhino_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/rhino" -method mean
+
+python3 demo_delta.py -w pytorch_goturn.pth.tar -d "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/sequences-train/swan" -s "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/swan_delta" -plots "/home/gustavo/Área de Trabalho/Pygoturn - Computer vision/PygoTurn-master/PygoTurn Implementation/our_results/plots/swan" -method mean
+
+
+
