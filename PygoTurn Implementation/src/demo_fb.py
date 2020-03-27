@@ -175,8 +175,6 @@ def main(args):
         im = tester.img[i][1]
         gt_bb = tester.gt[i]
         save(im, final_bbs[i], gt_bb, i+2)
-        print(final_bbs[i])
-        print(gt_bb)
 
         # print stats
         print('frame: %d, IoU = %f' % (i+2, iou_tot))
