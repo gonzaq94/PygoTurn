@@ -60,6 +60,8 @@ def axis_aligned_iou(boxA, boxB):
 
 def save(im, bb, gt_bb, idx):
     im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+    ground_truth_mask = np.zeros((im.shape[0],im.shape[1],3), np.uint8)
+    predicted_mask = np.zeros((im.shape[0],im.shape[1],3), np.uint8)
     bb = [int(val) for val in bb]  # GOTURN output
     gt_bb = [int(val) for val in gt_bb]  # groundtruth box
     # plot GOTURN predictions with red rectangle
@@ -68,9 +70,16 @@ def save(im, bb, gt_bb, idx):
     # plot annotations with white rectangle
     im = cv2.rectangle(im, (gt_bb[0], gt_bb[1]), (gt_bb[2], gt_bb[3]),
                        (255, 255, 255), 2)
-    save_path = os.path.join(args.save_directory, str(idx)+'.jpg')
-    cv2.imwrite(save_path, im)
 
+    ground_truth_mask = cv2.rectangle(ground_truth_mask, (gt_bb[0], gt_bb[1]), (gt_bb[2], gt_bb[3]),(255, 255, 255), -1) # Created the rectangular GT mask
+    predicted_mask = cv2.rectangle(predicted_mask, (bb[0], bb[1]), (bb[2], bb[3]),(255, 255, 255), -1) # Created the rectangular GT mask
+
+    save_path = os.path.join(args.save_directory, str(idx)+'.jpg')
+    save_path_GT = os.path.join(args.save_directory, str(idx)+'_GT'+'.bmp')
+    save_path_pre = os.path.join(args.save_directory, str(idx)+'_Pre'+'.bmp')
+    cv2.imwrite(save_path, im)
+    cv2.imwrite(save_path_GT, ground_truth_mask)
+    cv2.imwrite(save_path_pre, predicted_mask)
 
 def main(args):
 
