@@ -6,7 +6,7 @@ Three demo codes.
 
 demo.py: uses only one instance of PygoTurn
 
-demoBis.py: uses two instances, that move in forward and backward directions, respectively.
+demo_fb.py: uses two instances, that move in forward and backward directions, respectively.
 
 demo_delta.py: uses two instances both moving in the forward direction, separated delta frames.
 
